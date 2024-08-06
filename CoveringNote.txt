@@ -1,0 +1,12 @@
+Technology choices:
+
+Tailwind -
+modern css framework that has out the box support for responsive design. I also prefer utility frameworks where composition is a core principle.
+
+React - 
+component driven frontend that is fammilar and has wide support.
+noticed that the default version when installing react is react 18.3.1, opted for release candidate react@19.0.0-rc-fb9a90fa48-20240614
+the release candidate seems to 
+
+Typescript - 
+personal preference, prefer the predictability that types provide
