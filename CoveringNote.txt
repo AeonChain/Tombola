@@ -6,7 +6,12 @@ modern css framework that has out the box support for responsive design. I also 
 React - 
 component driven frontend that is fammilar and has wide support.
 noticed that the default version when installing react is react 18.3.1, opted for release candidate react@19.0.0-rc-fb9a90fa48-20240614
-the release candidate seems to 
+the release candidate seems to have other issues with dependencies
+Decided to look elsewhere for something adjacent
+
+Nextjs - as recommended on the react website this is a framework on top and it's out the box experience has no package vulnerabilities so opted for this instead
 
 Typescript - 
 personal preference, prefer the predictability that types provide
+
+Prettier - opinionated formatter that suits my needs and just applies some consistency

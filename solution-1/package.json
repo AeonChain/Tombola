@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+		"format:src": "npx prettier --write src/app/",
     "format:all": "npx prettier . --write"
   },
   "dependencies": {
