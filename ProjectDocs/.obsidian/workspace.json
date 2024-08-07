@@ -69,7 +69,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Solution 2 management/Setup.md",
+                "file": "DevelopmentLogs/2024-08-07.md",
                 "mode": "source",
                 "source": false
               }
@@ -142,7 +142,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Solution 2 management/Setup.md",
+                "file": "DevelopmentLogs/2024-08-07.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -159,7 +159,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Solution 2 management/Setup.md",
+                "file": "DevelopmentLogs/2024-08-07.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -182,7 +182,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Solution 2 management/Setup.md"
+                "file": "DevelopmentLogs/2024-08-07.md"
               }
             }
           }
@@ -205,10 +205,10 @@
   },
   "active": "4c961880e5af0b13",
   "lastOpenFiles": [
-    "DevelopmentLogs/2024-08-07.md",
-    "Solution 1 management/Solution 1.md",
     "Solution 2 management/Setup.md",
     "Solution 2 management/Solution 2.md",
+    "DevelopmentLogs/2024-08-07.md",
+    "Solution 1 management/Solution 1.md",
     "References/Tombola technical test.md",
     "Solution 2 management",
     "Data/AllTheBeans.json",
