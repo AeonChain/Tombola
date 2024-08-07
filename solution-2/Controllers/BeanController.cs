@@ -13,31 +13,31 @@ public class BeanController : ControllerBase
 		_logger = logger;
 	}
 
-	[HttpGet("/all")]
-	public IEnumerable<Beans> All()
-	{
-		this._logger.LogInformation("Get all beans");
-		return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-		{
-			Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-			TemperatureC = Random.Shared.Next(-20, 55),
-			Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-		})
-		.ToArray();
-	}
+	// [HttpGet("/all")]
+	// public IEnumerable<Beans> All()
+	// {
+	// 	this._logger.LogInformation("Get all beans");
+	// 	return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+	// 	{
+	// 		Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
+	// 		TemperatureC = Random.Shared.Next(-20, 55),
+	// 		Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+	// 	})
+	// 	.ToArray();
+	// }
 
-	[HttpGet("{id}")]
-	public IEnumerable<Beans> Get(Guid id)
-	{
-		this._logger.LogInformation($"Attempting to retrieve bean - {id}");
-		return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-		{
-			Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-			TemperatureC = Random.Shared.Next(-20, 55),
-			Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-		})
-		.ToArray();
-	}
+	// [HttpGet("{id}")]
+	// public IEnumerable<Beans> Get(Guid id)
+	// {
+	// 	this._logger.LogInformation($"Attempting to retrieve bean - {id}");
+	// 	return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+	// 	{
+	// 		Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
+	// 		TemperatureC = Random.Shared.Next(-20, 55),
+	// 		Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+	// 	})
+	// 	.ToArray();
+	// }
 
 
 }

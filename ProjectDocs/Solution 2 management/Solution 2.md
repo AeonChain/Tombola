@@ -5,7 +5,7 @@
 	- The selected bean cannot be the same as the previous day. 
 	- Implement a database search feature to show products available 
 ## 1
-keeping in the theme of lightweight, looking into relational databases i think SQLite is a good fit.
+keeping in the theme of lightweight, looking into relational databases i think SQLite is a good fit. Plus the database can be source controlled with little effort
 ## 2
 dotnet is familiar and good packages to manage and talk to databases, wide support, out the box template for swagger
 ## 3

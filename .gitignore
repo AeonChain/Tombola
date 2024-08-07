@@ -1,1 +1,5 @@
 solution-1/node_modules/*
+**/.obsidian
+**/obj
+**/bin
+**/beans.db
