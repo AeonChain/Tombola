@@ -1,6 +1,6 @@
 # requirements
-- sqlite
-- sqlite cli tools
+- sqlite (if you want the build the db yourself)
+- sqlite cli tools (if you want the build the db yourself)
 - dotnet cli
 # creating the database
 sqlite3

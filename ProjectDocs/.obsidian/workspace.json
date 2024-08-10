@@ -74,9 +74,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "fa08fd43c3354ee0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DevelopmentLogs/2024-08-10.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 5
+        "currentTab": 6
       }
     ],
     "direction": "vertical"
@@ -142,7 +154,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DevelopmentLogs/2024-08-07.md",
+                "file": "DevelopmentLogs/2024-08-10.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -159,7 +171,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DevelopmentLogs/2024-08-07.md",
+                "file": "DevelopmentLogs/2024-08-10.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -182,7 +194,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DevelopmentLogs/2024-08-07.md"
+                "file": "DevelopmentLogs/2024-08-10.md"
               }
             }
           }
@@ -203,11 +215,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "4c961880e5af0b13",
+  "active": "fa08fd43c3354ee0",
   "lastOpenFiles": [
     "Solution 2 management/Setup.md",
-    "Solution 2 management/Solution 2.md",
+    "DevelopmentLogs/2024-08-10.md",
     "DevelopmentLogs/2024-08-07.md",
+    "Solution 2 management/Solution 2.md",
     "Solution 1 management/Solution 1.md",
     "References/Tombola technical test.md",
     "Solution 2 management",

@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using solution_2.Models;
 
 namespace solution_2.Controllers;
@@ -20,8 +21,10 @@ public class BeanController : ControllerBase
 	[HttpGet("/all")]
 	public IEnumerable<Bean> All()
 	{
-		this._logger.LogInformation("Get all beans");
-		return _dbContext.Beans.Select(x => x).ToList();
+		_logger.LogInformation("Get all beans");
+		var allTheBeans = _dbContext.Beans.Select(x => x).ToList();
+		_logger.LogInformation(JsonConvert.SerializeObject(allTheBeans));
+		return allTheBeans;
 	}
 
 	// [HttpGet("{id}")]

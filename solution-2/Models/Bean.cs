@@ -1,14 +1,25 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace solution_2.Models;
 
 public class Bean
 {
-	public int beanIndex { get; set; }
-	public string _id { get; set; }
-	public bool isBOTD { get; set; }
-	public string cost { get; set; }
-	public string image { get; set; }
-	public string colour { get; set; }
-	public string name { get; set; }
-	public string description { get; set; }
-	public string country { get; set; }
+	[Column("BeanIndex")]
+	public int Index { get; set; }
+	[Column("_id")]
+	public required string Id { get; set; }
+	[Column("isBotd")]
+	public bool IsBOTD { get; set; }
+	[Column("cost")]
+	public required string Cost { get; set; }
+	[Column("image")]
+	public required string Image { get; set; }
+	[Column("colour")]
+	public required string Colour { get; set; }
+	[Column("name")]
+	public required string Name { get; set; }
+	[Column("description")]
+	public required string Description { get; set; }
+	[Column("country")]
+	public required string Country { get; set; }
 }

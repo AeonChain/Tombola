@@ -22,7 +22,7 @@ public class BeansContext : DbContext
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
 		modelBuilder.Entity<Bean>()
-				.HasKey(b => b._id)
+				.HasKey(b => b.Id)
 				.HasName("PrimaryKey_BlogId");
 	}
 
