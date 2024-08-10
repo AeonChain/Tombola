@@ -16,20 +16,23 @@ export default function List({ AvailableBeans }: props) {
     );
   }
 
-  const transformBeanDataForCard = (bean: Bean): CardData => {
+	const transformBeanDataForCard = (bean: Bean): CardData => {
     return {
-      title: bean.name,
-      description: bean.description,
+			title: { title:'Name', content:bean.name },
+			Columns: [
+				{title:'Colour', content: bean.colour },
+				{ title: 'Cost', content: bean.cost },
+				{title:'Country', content:bean.country}
+			],
       action: () => {
-        ("");
         console.log(bean.id);
       },
     };
   };
   return (
-    <div className="w-full flex justify-center mt-6">
+    <div className="w-full grid gap-4 justify-center mt-6">
       {AvailableBeans.map((x, i) => {
-        return <Card key={i} data={transformBeanDataForCard(x)} />;
+        return <Card key={i} data={transformBeanDataForCard(x)} columns={5} />;
       })}
     </div>
   );
