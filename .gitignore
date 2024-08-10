@@ -3,3 +3,4 @@ solution-1/node_modules/*
 **/obj
 **/bin
 **/beans.db
+**/.obsidian-2
