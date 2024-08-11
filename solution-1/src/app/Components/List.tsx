@@ -1,4 +1,5 @@
 "use client";
+import Link from 'next/link';
 import Card, { CardData } from "./Card";
 
 type props = {
@@ -32,7 +33,7 @@ export default function List({ AvailableBeans }: props) {
   return (
     <div className="w-full grid gap-4 justify-center mt-6">
       {AvailableBeans.map((x, i) => {
-        return <Card key={i} data={transformBeanDataForCard(x)} columns={5} />;
+				return <Link key={i} href={`/bean/${x.id}`}><Card data={transformBeanDataForCard(x)} columns={5} /></Link>;
       })}
     </div>
   );

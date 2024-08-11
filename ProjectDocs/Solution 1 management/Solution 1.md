@@ -11,7 +11,7 @@ Going to use Tailwind for this, i think declarative and composition based css fr
 ## 2
 Emailed a few days ago about the lack of a json file, still haven't heard back, still can make a guess at what the data looks like and i can make a start, the following components need to be created:
 - List
-- Card view
+- Card component
 - Bean of the day (feel like a hero style banner would be best)
 - a form
 - search bar

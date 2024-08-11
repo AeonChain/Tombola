@@ -5,7 +5,7 @@ using solution_2.Models;
 namespace solution_2.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("[controller]/[action]")]
 public class BeanController : ControllerBase
 {
 	private readonly ILogger<BeanController> _logger;
@@ -18,13 +18,31 @@ public class BeanController : ControllerBase
 		_dbContext = context;
 	}
 
-	[HttpGet("/all")]
-	public IEnumerable<Bean> All()
+	[HttpGet]
+	public IActionResult All()
 	{
 		_logger.LogInformation("Get all beans");
 		var allTheBeans = _dbContext.Beans.Select(x => x).ToList();
-		_logger.LogInformation(JsonConvert.SerializeObject(allTheBeans));
-		return allTheBeans;
+		_logger.LogInformation($"found '{allTheBeans.Count}' beans");
+		return new JsonResult(allTheBeans);
+	}
+
+	[Route("/[controller]/{id}")]
+	public IActionResult Index(string id)
+	{
+		_logger.LogInformation($"Get bean with id: '{id}'");
+		var beans = _dbContext.Beans.Where(x => x.Id == id).ToList();
+		if (beans.Count == 0)
+		{
+			_logger.LogError($"No beans found for id: '{id}'");
+			return NotFound();
+		}
+		if (beans.Count > 1)
+		{
+			_logger.LogError($"Found multiple beans with the same id: '{id}', returning first instance");
+		}
+		var bean = beans.First();
+		return new JsonResult(bean);
 	}
 
 	// [HttpGet("{id}")]
