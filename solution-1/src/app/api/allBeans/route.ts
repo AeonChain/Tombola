@@ -1,15 +1,18 @@
-import { NextResponse } from 'next/server';
+'use server'
+import { NextRequest, NextResponse } from 'next/server';
 
-type Params = {
-  team: string
-}
- 
-export async function GET(request: Request, context: { params: Params }) {
-    const route = process.env.ALL_BEANS_ROUTE;
+export async function GET(req: NextRequest,) {
+  const route = process.env.ALL_BEANS_ROUTE;
   if (!route) {
     throw Error("No 'ALL_BEANS_ROUTE' enviroment variable set");
 	}
-	const result = await fetch(route);
-  return  NextResponse.json({ data:await result.json() }, { status: 200 })
+
+	  const searchParams = req.nextUrl.searchParams.get("searchTerm")
+	const apiRoute = route + (searchParams ? `?searchTerm=${searchParams}` : "");
+	console.log(apiRoute, searchParams)
+	const result = await fetch(apiRoute);
+	const data = await result.json()
+	// console.log(data);
+  return  NextResponse.json({ data:data }, { status: 200 })
 }
  

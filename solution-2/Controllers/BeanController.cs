@@ -21,10 +21,13 @@ public class BeanController : ControllerBase
 	}
 
 	[HttpGet]
-	public IActionResult All()
+	public IActionResult All(string? searchTerm)
 	{
-		_logger.LogInformation("Get all beans");
-		var allTheBeans = _dbContext.Beans.Select(x => x).ToList();
+
+		var hasSearchTerm = !string.IsNullOrWhiteSpace(searchTerm);
+		_logger.LogInformation("Get all beans" + (hasSearchTerm ? $" with search term:'{searchTerm}'" : ""));
+
+		var allTheBeans = _dbContext.Beans.Where(x => !hasSearchTerm || EF.Functions.Like(x.Name.ToLower(), '%' + searchTerm.ToLower() + '%')).Select(x => x).ToList();
 		_logger.LogInformation($"found '{allTheBeans.Count}' beans");
 		return new JsonResult(allTheBeans);
 	}
@@ -53,12 +56,13 @@ public class BeanController : ControllerBase
 	public IActionResult BOTD()
 	{
 		_logger.LogInformation($"Getting BOTD");
-		var BOTD = _dbContext.Beans.SingleOrDefault(x => x.IsBOTD);
+		var allBOTD = _dbContext.Beans.Where(x => x.IsBOTD).ToList();
+		var BOTD = allBOTD.First();
 		var relevantBOTDTimeframe = DateTime.Now.AddDays(-1).AtMidnight();
 		_logger.LogInformation(BOTD?.Id, relevantBOTDTimeframe.ToString("dd/MM/yy hh:mm"));
 		if (BOTD == null || !BOTD.LastInstanceOfBOTD.HasValue || BOTD.LastInstanceOfBOTD > relevantBOTDTimeframe)
 		{
-			var newBOTDId = _dbContext.Beans.FromSql($"SELECT _id, RANDOM() FROM beans ORDER BY RANDOM(), _id").Select(x => x.Id).Take(1).First();
+			var newBOTDId = _dbContext.Beans.FromSql($"SELECT _id, RANDOM() FROM beans ORDER BY RANDOM(), _id").Select(x => x.Id).First();
 			var newBOTD = _dbContext.Beans.SingleOrDefault(x => x.Id == newBOTDId);
 			if (newBOTD == null)
 			{
@@ -68,10 +72,7 @@ public class BeanController : ControllerBase
 			{
 				newBOTD.IsBOTD = true;
 				newBOTD.LastInstanceOfBOTD = DateTime.Now.AtMidnight();
-				if (BOTD == null)
-				{
-					BOTD.IsBOTD = false;
-				}
+				allBOTD.ForEach(x => x.IsBOTD = false);
 				_dbContext.SaveChanges();
 				return new JsonResult(newBOTD);
 			}

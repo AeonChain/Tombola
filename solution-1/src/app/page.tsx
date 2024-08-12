@@ -1,16 +1,28 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, createContext } from "react";
 import List from "./Components/List";
 import PromotionBanner from "./Components/PromotionBanner";
-import SkeletonBlock from "./Components/SkeletonBlock";
+import Search from "./Components/Search";
+
+export const SearchContext = createContext({
+  search: "",
+  setSearch: (_newSearchValue: string) => {},
+});
 
 export default function Home() {
   const [data, setData] = useState([] as Bean[]);
   const [botd, setBotd] = useState<Bean>();
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
-    fetch("/api/allBeans").then((x) => x.json().then((x) => setData(x.data)));
-  }, []);
+    const url = "/api/allBeans" + (search ? `?searchTerm=${search}` : "");
+    fetch(url).then((x) =>
+      x.json().then((x) => {
+        console.log("new data", x.data);
+        setData(x.data);
+      }),
+    );
+  }, [search]);
 
   useEffect(() => {
     fetch("/api/BeanOfTheDay").then((x) =>
@@ -19,7 +31,15 @@ export default function Home() {
   }, []);
 
   return (
-    <>
+    <SearchContext.Provider
+      value={{
+        search: search,
+        setSearch: (newSearchValue: string) => {
+          setSearch(newSearchValue);
+        },
+      }}
+    >
+      <Search />
       {botd && (
         <PromotionBanner
           image={botd.image}
@@ -30,6 +50,6 @@ export default function Home() {
         />
       )}
       <List AvailableBeans={data} />
-    </>
+    </SearchContext.Provider>
   );
 }
