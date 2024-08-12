@@ -1,4 +1,4 @@
-CREATE TABLE beans(beanIndex NUMBER PRIMARY KEY, _id TEXT, isBOTD BOOLEAN, cost TEXT, image TEXT, colour TEXT, name TEXT, description TEXT, country TEXT);
+CREATE TABLE beans(beanIndex NUMBER PRIMARY KEY, _id TEXT, isBOTD BOOLEAN, cost TEXT, image TEXT, colour TEXT, name TEXT, description TEXT, country TEXT, lastInstanceOfBOTD datetime);
 
 INSERT INTO beans SELECT 
   json_extract(value, '$.index'), 
@@ -9,7 +9,8 @@ INSERT INTO beans SELECT
 	json_extract(value, '$.colour'),
 	json_extract(value, '$.Name'),
 	json_extract(value, '$.Description'),
-	json_extract(value, '$.Country')
+	json_extract(value, '$.Country'),
+	null
 FROM json_each(readfile('AllTheBeans.json'));
 
 CREATE INDEX beans_beanIndex_idx ON beans (beanIndex);

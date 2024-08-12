@@ -22,4 +22,7 @@ public class Bean
 	public required string Description { get; set; }
 	[Column("country")]
 	public required string Country { get; set; }
+	[Column("lastInstanceOfBOTD")]
+	public required DateTime? LastInstanceOfBOTD { get; set; }
+
 }

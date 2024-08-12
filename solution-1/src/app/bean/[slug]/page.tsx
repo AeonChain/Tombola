@@ -31,8 +31,6 @@ export default async function BeanPage({
           width={360}
           height={200}
           loading={"eager"}
-          placeholder={"empty"}
-          data-loaded="false"
         />
       </div>
       <div className="flex justify-around py-4">

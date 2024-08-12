@@ -1,4 +1,6 @@
+using Humanizer;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using solution_2.Models;
 
@@ -28,6 +30,7 @@ public class BeanController : ControllerBase
 	}
 
 	[Route("/[controller]/{id}")]
+	[HttpGet]
 	public IActionResult Index(string id)
 	{
 		_logger.LogInformation($"Get bean with id: '{id}'");
@@ -45,18 +48,35 @@ public class BeanController : ControllerBase
 		return new JsonResult(bean);
 	}
 
-	// [HttpGet("{id}")]
-	// public IEnumerable<Beans> Get(Guid id)
-	// {
-	// 	this._logger.LogInformation($"Attempting to retrieve bean - {id}");
-	// 	return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-	// 	{
-	// 		Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-	// 		TemperatureC = Random.Shared.Next(-20, 55),
-	// 		Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-	// 	})
-	// 	.ToArray();
-	// }
-
-
+	[HttpGet]
+	[Route("/[controller]/botd")]
+	public IActionResult BOTD()
+	{
+		_logger.LogInformation($"Getting BOTD");
+		var BOTD = _dbContext.Beans.SingleOrDefault(x => x.IsBOTD);
+		var relevantBOTDTimeframe = DateTime.Now.AddDays(-1).AtMidnight();
+		_logger.LogInformation(BOTD?.Id, relevantBOTDTimeframe.ToString("dd/MM/yy hh:mm"));
+		if (BOTD == null || !BOTD.LastInstanceOfBOTD.HasValue || BOTD.LastInstanceOfBOTD > relevantBOTDTimeframe)
+		{
+			var newBOTDId = _dbContext.Beans.FromSql($"SELECT _id, RANDOM() FROM beans ORDER BY RANDOM(), _id").Select(x => x.Id).Take(1).First();
+			var newBOTD = _dbContext.Beans.SingleOrDefault(x => x.Id == newBOTDId);
+			if (newBOTD == null)
+			{
+				_logger.LogError($"New BOTD cannot be selected with id: '{newBOTDId}'");
+			}
+			else
+			{
+				newBOTD.IsBOTD = true;
+				newBOTD.LastInstanceOfBOTD = DateTime.Now.AtMidnight();
+				if (BOTD == null)
+				{
+					BOTD.IsBOTD = false;
+				}
+				_dbContext.SaveChanges();
+				return new JsonResult(newBOTD);
+			}
+			_logger.LogInformation($"new BOTD: {newBOTDId}");
+		}
+		return new JsonResult(BOTD);
+	}
 }
