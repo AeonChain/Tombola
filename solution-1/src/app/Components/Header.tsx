@@ -1,4 +1,5 @@
 import Link from "next/link";
+import OrderButton from "./OrderButton";
 
 export default function Header() {
   return (
@@ -8,6 +9,7 @@ export default function Header() {
     >
       <div>Tom-Beana!</div>
       <div className="text-lg">Your one stop shop for beans!</div>
+      <OrderButton />
     </Link>
   );
 }

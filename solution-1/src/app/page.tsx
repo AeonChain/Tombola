@@ -9,6 +9,12 @@ export const SearchContext = createContext({
   setSearch: (_newSearchValue: string) => {},
 });
 
+// export const BasketContext = createContext({
+//   basket: [],
+//   addToBasket: (bean: Bean) => {},
+//   removeFromBasket: (id: Bean) => {},
+// });
+
 export default function Home() {
   const [data, setData] = useState([] as Bean[]);
   const [botd, setBotd] = useState<Bean>();
@@ -25,7 +31,7 @@ export default function Home() {
   }, [search]);
 
   useEffect(() => {
-    fetch("/api/BeanOfTheDay").then((x) =>
+    fetch("/api/beanOfTheDay").then((x) =>
       x.json().then((x) => setBotd(x.data)),
     );
   }, []);
@@ -45,7 +51,7 @@ export default function Home() {
           image={botd.image}
           imageAlt="Image showing our Bean of the day"
           title="Have a look our Bean of the day!"
-          description="Click anywhere in this banner to find out more!"
+          description={`The bean of the day is: ${botd.name} Click anywhere in this banner to find out more!`}
           destination={`/bean/${botd.id}`}
         />
       )}
