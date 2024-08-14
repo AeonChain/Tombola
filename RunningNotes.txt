@@ -1,0 +1,30 @@
+For ideal conditions please run solution 1 and 2 in tandem, works best if solution 2 is running first.
+
+
+Solution 1
+requires
+Node.js v20.11.0 or greater
+npm version 7.5.2 or greater
+
+(if any issues please try and match the versions above)
+
+Instructions to run:
+in a terminal run these commands in order (from the base of Repository):
+pushd solution-1
+npm i 
+npm run dev
+popd
+
+Solution 2
+requirements:
+Dotnet sdk 8.0 or higher
+Sqlite3
+
+Instructions to run:
+in a terminal run these commands in order (from the base of Repository):
+
+you may alread have development certificates trusted so this step is optional
+dotnet dev-certs https --trust
+
+cd solution-2
+dotnet run --launch-profile https

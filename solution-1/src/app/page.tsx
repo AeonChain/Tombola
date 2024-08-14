@@ -3,21 +3,15 @@ import { useEffect, useState, createContext } from "react";
 import List from "./Components/List";
 import PromotionBanner from "./Components/PromotionBanner";
 import Search from "./Components/Search";
+import BeanOfTheDay from "./Components/BeanOfTheDay";
 
 export const SearchContext = createContext({
   search: "",
   setSearch: (_newSearchValue: string) => {},
 });
 
-// export const BasketContext = createContext({
-//   basket: [],
-//   addToBasket: (bean: Bean) => {},
-//   removeFromBasket: (id: Bean) => {},
-// });
-
 export default function Home() {
   const [data, setData] = useState([] as Bean[]);
-  const [botd, setBotd] = useState<Bean>();
   const [search, setSearch] = useState("");
 
   useEffect(() => {
@@ -28,13 +22,7 @@ export default function Home() {
         setData(x.data);
       }),
     );
-  }, [search]);
-
-  useEffect(() => {
-    fetch("/api/beanOfTheDay").then((x) =>
-      x.json().then((x) => setBotd(x.data)),
-    );
-  }, []);
+  }, [search, setData]);
 
   return (
     <SearchContext.Provider
@@ -46,15 +34,7 @@ export default function Home() {
       }}
     >
       <Search />
-      {botd && (
-        <PromotionBanner
-          image={botd.image}
-          imageAlt="Image showing our Bean of the day"
-          title="Have a look our Bean of the day!"
-          description={`The bean of the day is: ${botd.name} Click anywhere in this banner to find out more!`}
-          destination={`/bean/${botd.id}`}
-        />
-      )}
+      <BeanOfTheDay />
       <List AvailableBeans={data} />
     </SearchContext.Provider>
   );

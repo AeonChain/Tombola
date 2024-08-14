@@ -7,20 +7,22 @@ export default function Search() {
   const context = useContext(SearchContext);
   return (
     <div className="w-full text-center text-lg bg-slate-600 pt-2 pb-4 rounded-b-2xl flex flex-wrap justify-around">
-      <div className="w-9/12 text-lg bg-white py-1">
+      <div className="grow text-lg bg-white py-1 mx-2 pl-2">
         <input
+          className="w-full"
           ref={ref}
           placeholder="Search..."
           defaultValue={context.search}
         ></input>
       </div>
       <div
-        className="w-2/12 bg-slate-50 rounded-2xl flex justify-around align-middle cursor-pointer transition-all duration-300 hover:bg-slate-500 hover:text-white"
+        className="p-2 bg-slate-50 rounded-2xl flex justify-around text-center cursor-pointer transition-all duration-300 hover:bg-slate-500 hover:text-white"
         onClick={() => {
           context.setSearch(ref?.current?.value ?? "");
         }}
       >
-        Filter <FilterIcon />
+        Filter
+        <FilterIcon />
       </div>
     </div>
   );

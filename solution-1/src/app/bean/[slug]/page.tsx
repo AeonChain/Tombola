@@ -23,8 +23,9 @@ export default async function BeanPage({
         <Link href="/">
           <span className="">Back to list</span>
         </Link>
-        <h1 className="grow">{data.name}</h1>
-
+        <h1 className="grow sm:text-3xl">{data.name}</h1>
+      </div>
+      <div className="flex justify-center">
         <SkeletonImageHandler
           alt={`Image of the bean called: ${data.name}`}
           src={data.image}
@@ -33,18 +34,20 @@ export default async function BeanPage({
           loading={"eager"}
         />
       </div>
-      <div className="flex justify-around py-4">
-        <span className="bg-slate-900 rounded-3xl text-white p-4">
-          {data.colour}
-        </span>
-        <span className="bg-slate-900 rounded-3xl text-white p-4">
-          {data.cost}
-        </span>
-        <span className="bg-slate-900 rounded-3xl text-white p-4">
-          {data.country}
-        </span>
+      <div className="bg-slate-800 text-white h-auto">
+        <div className="flex justify-around py-4">
+          <span className="bg-slate-900 rounded-3xl text-white p-4">
+            {data.colour}
+          </span>
+          <span className="bg-slate-900 rounded-3xl text-white p-4">
+            {data.cost}
+          </span>
+          <span className="bg-slate-900 rounded-3xl text-white p-4">
+            {data.country}
+          </span>
+        </div>
+        <div>{data.description}</div>
       </div>
-      <div>{data.description}</div>
     </div>
   );
 }

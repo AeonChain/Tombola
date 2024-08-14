@@ -28,9 +28,7 @@ export default function PromotionBanner(props: PromotionBannerProps) {
         </div>
         <div className="flex flex-wrap text-center">
           <div className="w-full text-xl md:text-3xl">{props.title}</div>
-          <div className="grow text-base -mt-4 sm:-mt-12 md:mt-0">
-            {props.description}
-          </div>
+          <div className="grow text-base">{props.description}</div>
         </div>
       </div>
     </Link>

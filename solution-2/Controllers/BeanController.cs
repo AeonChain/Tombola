@@ -27,7 +27,11 @@ public class BeanController : ControllerBase
 		var hasSearchTerm = !string.IsNullOrWhiteSpace(searchTerm);
 		_logger.LogInformation("Get all beans" + (hasSearchTerm ? $" with search term:'{searchTerm}'" : ""));
 
-		var allTheBeans = _dbContext.Beans.Where(x => !hasSearchTerm || EF.Functions.Like(x.Name.ToLower(), '%' + searchTerm.ToLower() + '%')).Select(x => x).ToList();
+		var allTheBeans = _dbContext.Beans
+		.Where(x => !hasSearchTerm || EF.Functions.Like(x.Name.ToLower(), '%' + (searchTerm ?? "").ToLower() + '%'))
+		.Select(x => x)
+		.ToList();
+
 		_logger.LogInformation($"found '{allTheBeans.Count}' beans");
 		return new JsonResult(allTheBeans);
 	}

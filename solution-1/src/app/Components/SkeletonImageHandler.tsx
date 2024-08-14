@@ -9,12 +9,13 @@ export type SkeletonImageHandlerProps = {
 export default function SkeletonImageHandler(props: SkeletonImageHandlerProps) {
   const [imageHasLoaded, setImageHasLoaded] = useState(false);
   const { overrideClassnames, ...data } = props;
-  const classNames =
-    (overrideClassnames ||
-      `w-full mx-2 h-64 max-h-64 overflow-hidden justify-self-center `) +
-    imageHasLoaded
-      ? ""
-      : "min-h-64 bg-slate-700 animate-pulse";
+  const loadingClasses = imageHasLoaded
+    ? ""
+    : "min-h-64 bg-slate-700 animate-pulse";
+  const classNames = overrideClassnames
+    ? overrideClassnames
+    : "mx-2 h-64 max-h-64 overflow-hidden" + loadingClasses;
+  console.log(overrideClassnames, classNames, loadingClasses);
   return (
     <div className={classNames}>
       <Image

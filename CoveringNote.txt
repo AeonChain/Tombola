@@ -1,5 +1,20 @@
-Technology choices:
+Repository choices:
+you may notice i've left enviroment variables in and even included the database file, this is mearly for convienice for reviewing purposes and under regular circumstances would never do so.
+I have left setup information in the project Docs folder in the case you would like to generate such files yourself
 
+Improvements i'd make if i had more time:
+I'd like to add an orders column with an endpoint that could edit or delete.
+
+I'd like to build a back office admin route that could manage orders and beans.
+I'd like to spend more time with colours and design overall, it's functional but i wouldn't describe it as appealing
+
+Adding a test suite - found it difficult to think of tests that actually provide value, snapshot tests might be a good start
+
+add fallbacks when the backend is not running
+
+
+Technology choices:
+Solution 1
 Tailwind -
 modern css framework that has out the box support for responsive design. I also prefer utility frameworks where composition is a core principle.
 
@@ -11,7 +26,22 @@ Decided to look elsewhere for something adjacent
 
 Nextjs - as recommended on the react website this is a framework on top and it's out the box experience has no package vulnerabilities so opted for this instead
 
+Yup for form validation
+
+react form hooks for form state management
+
 Typescript - 
 personal preference, prefer the predictability that types provide
 
 Prettier - opinionated formatter that suits my needs and just applies some consistency
+
+
+Solution 2
+Dotnet - 
+cross platform framework with wide support and relatively easy setup.
+
+Entity framework -
+Great for interacting with databases and just overall makes querying data easier
+
+sqlite -
+lightweight relational database, very portable, can bundle the file with the project for easier setup

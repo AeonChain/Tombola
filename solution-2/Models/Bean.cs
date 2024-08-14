@@ -7,22 +7,22 @@ public class Bean
 	[Column("BeanIndex")]
 	public int Index { get; set; }
 	[Column("_id")]
-	public required string Id { get; set; }
+	public string Id { get; set; } = string.Empty;
 	[Column("isBotd")]
 	public bool IsBOTD { get; set; }
 	[Column("cost")]
-	public required string Cost { get; set; }
+	public string Cost { get; set; } = string.Empty;
 	[Column("image")]
-	public required string Image { get; set; }
+	public string Image { get; set; } = string.Empty;
 	[Column("colour")]
-	public required string Colour { get; set; }
+	public string Colour { get; set; } = string.Empty;
 	[Column("name")]
-	public required string Name { get; set; }
+	public string Name { get; set; } = string.Empty;
 	[Column("description")]
-	public required string Description { get; set; }
+	public string Description { get; set; } = string.Empty;
 	[Column("country")]
-	public required string Country { get; set; }
+	public string Country { get; set; } = string.Empty;
 	[Column("lastInstanceOfBOTD")]
-	public required DateTime? LastInstanceOfBOTD { get; set; }
+	public DateTime? LastInstanceOfBOTD { get; set; }
 
 }

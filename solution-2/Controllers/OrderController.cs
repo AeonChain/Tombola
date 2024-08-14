@@ -20,4 +20,11 @@ public class OrderController : ControllerBase
 		var dummy = 0;
 		return new JsonResult(new { dummy });
 	}
+
+	[HttpPost]
+	public IActionResult Delete(Guid id)
+	{
+		var dummy = 0;
+		return new JsonResult(new { dummy });
+	}
 }
