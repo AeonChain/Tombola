@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState, createContext } from "react";
 import List from "./Components/List";
-import PromotionBanner from "./Components/PromotionBanner";
 import Search from "./Components/Search";
 import BeanOfTheDay from "./Components/BeanOfTheDay";
 
